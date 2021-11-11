@@ -1,0 +1,69 @@
+import csv
+
+class RatingTable(object):
+
+    #Construtor
+    def __init__(self):
+        
+        self.size = 100003 
+
+        self.table = [[] for _ in range(self.size)]
+
+    
+
+    '''Se já existe naquele indice, apenas adiciona a nova avaliação. Senao cria uma nova lista'''
+    def insert(self, userID: int, playerID:int, rating:float):
+
+        index = self.hashingFunction(userID)
+        flag = False
+        indexUserId = 0
+
+        #Procura pelo id no indice
+        for k in range(len(self.table[index])):
+            if userID in self.table[index][k]:
+                flag = True
+                indexUserId = k
+                break
+                
+            else:
+                flag = False
+                
+        
+        if flag:
+            self.table[index][indexUserId][1].append(playerID) 
+            self.table[index][indexUserId][1].append(rating) 
+        else:
+           self.table[index].append([userID, [playerID, rating]]) 
+
+
+    #Hash usando o resto da divisao
+    def hashingFunction(self, userID: int):
+        
+        return userID % self.size
+
+
+    def query(self, userID: int):
+        
+        index = self.hashingFunction(userID)
+
+        for i in range(len(self.table[index])):    #Encontra a lista com as avaliações daquele usuario
+            
+            if userID in self.table[index][i]:
+                userIndex = i                       #Salva o indice
+                return self.table[index][userIndex][1]
+                
+
+    
+    def readCSV(self):
+        with open('datasets/rating.csv', encoding="utf8") as input:
+            playersFile = csv.reader(input, delimiter=",")
+
+            playersFile.__next__() #Skip first line 
+
+            for row in playersFile:
+                userID = int(row[0])
+                playerID = int(row[1])
+                rating = float(row[2])
+
+                self.insert(userID, playerID, rating)
+                
