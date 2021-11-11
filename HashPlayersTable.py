@@ -11,17 +11,17 @@ class HashTablePlayers(object):
         #Initialize table
         self.table = [[] for _ in range(self.size)]
 
-    def insertIntoTable(self, playerID:int, name:str, positions:list):
+    def insertIntoHash(self, playerID:int, name:str, positions:list):
         self.table[playerID] = [playerID, name, positions, [0, 0.0]]
 
-
+    #Consulta um player
     def query(self, playerId:int):
         return self.table[playerId]
 
 
     def readDataSet(self, root):
 
-        with open('backend/datasets/players.csv', encoding="utf8") as input:
+        with open('datasets/players.csv', encoding="utf8") as input:
             playersFile = csv.reader(input, delimiter=",")
 
             playersFile.__next__() #Skip first line 
@@ -31,20 +31,16 @@ class HashTablePlayers(object):
                 name = str(row[1])
                 positions = str(row[2]).split(", ")
                 
-                self.insertIntoTable(playerID, name, positions)
-                insertIntoTrie(root, name, playerID)
+                self.insertIntoHash(playerID, name, positions)      #Insere dados na tabela
+                insertIntoTrie(root, name, playerID)        #Insere nome e id na arvore
 
+        print('players.csv DONE!')
+        
 
-        print(self.table[135507])
-        #print(self.table[int(20801)])
-        #print(self.table[int(241461)])
-
-        print('backend/players.csv DONE!')
-
-
+    #Le o arquivo rating.csv e insere as avaliaçoes
     def ratingCount(self):
         
-        with open('backend/datasets/rating.csv', encoding="utf8") as input:
+        with open('datasets/rating.csv', encoding="utf8") as input:
             rating = csv.reader(input, delimiter=",")
 
             rating.__next__() #Skip first line 
@@ -58,7 +54,7 @@ class HashTablePlayers(object):
                 self.table[playerID][3][0] += 1
                 self.table[playerID][3][1] += userRating
 
-        
+    #Calcula as medias
     def average(self):
         for i in range(self.size):
            
@@ -72,11 +68,5 @@ class HashTablePlayers(object):
             except:
                 pass
 
-
-        print(self.table[int(158023)])
-        print(self.table[int(20801)])
-        print(self.table[int(241461)])
-
-
-        print('backend/ratings.csv DONE!')
+        print('rating.csv DONE!')
             
