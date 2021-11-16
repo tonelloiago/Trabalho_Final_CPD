@@ -12,7 +12,7 @@ class HashTablePlayers(object):
         self.table = [[] for _ in range(self.size)]
 
     def insertIntoHash(self, playerID:int, name:str, positions:list):
-        self.table[playerID] = [playerID, name, positions, [0, 0.0]]
+        self.table[playerID] = [playerID, name, positions, [0, 0.0], []]
 
     #Consulta um player
     def query(self, playerId:int):

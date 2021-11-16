@@ -1,8 +1,10 @@
-import time
 from HashPlayersTable import *  
 from HashRatingTable import *
+from HashTagsTable import *
 from Trie import *
 from threading import Thread
+import time
+
 
 inicio = time.time()
 
@@ -20,26 +22,11 @@ t2.start()
 t1.join()
 t2.join()
 
-
-##Tabela Hash <name, player_positions, rating, count>
-# players.readDataSet(root) 
-# print(time.time() - inicio)
-# players.ratingCount()
-# players.average()
-# print(time.time() - inicio)
-
-# #Tabela Hash de avaliações
-# ratings = HashRatingTable()
-# ratings.readDataSet()
+players.table = readTags(players.table)
 
 print(time.time() - inicio)
 
-print(ratings.query(24379))
-
-
-
-
-#Tempo de execução
+    
 
 
 
