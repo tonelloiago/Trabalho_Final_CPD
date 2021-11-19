@@ -19,3 +19,4 @@ Fase 2 - X
     Estrutura das pesquisas - Falta top<N> 'position'
 
 
+Obs.: Tentei organizar em pastas mas o python não foi muito amigável com isso.
