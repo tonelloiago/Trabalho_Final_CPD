@@ -10,7 +10,6 @@ def quick_sort(array, n):
 def quicksort(array, inicio, fim):
     if (inicio < fim):
         pi = partition(array, inicio, fim)
-
         quicksort(array, inicio, pi - 1)
         quicksort(array, pi + 1, fim)
     

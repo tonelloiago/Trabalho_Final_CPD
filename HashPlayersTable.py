@@ -3,14 +3,15 @@ from Trie import *
 
 class HashTablePlayers(object):
 
-    #Constructor
+    #Construtor
     def __init__(self):
 
-        self.size = 258970 + 1
+        self.size = 258970 + 1  #tamanho é o maior id + 1 -> sem colisões
 
-        #Initialize table
+        #Inicializa a tabela com uma lista
         self.table = [[] for _ in range(self.size)]
 
+    #Função que insere na tabela
     def insertIntoHash(self, playerID:int, name:str, positions:list):
         self.table[playerID] = [playerID, name, positions, [0, 0.0], []]
 
@@ -18,7 +19,7 @@ class HashTablePlayers(object):
     def query(self, playerId:int):
         return self.table[playerId]
 
-
+    #Le o data set e realiza as inserções
     def readDataSet(self, root):
 
         with open('datasets/players.csv', encoding="utf8") as input:
@@ -40,19 +41,19 @@ class HashTablePlayers(object):
     #Le o arquivo rating.csv e insere as avaliaçoes
     def ratingCount(self):
         
-        with open('datasets/rating.csv', encoding="utf8") as input:
+        with open('datasets/minirating.csv', encoding="utf8") as input:
             rating = csv.reader(input, delimiter=",")
 
             rating.__next__() #Skip first line 
             
             for row in rating:
-                userID = int(row[0])
+                #userID = int(row[0])
                 playerID = int(row[1])
                 userRating = float(row[2])
                 
                 #self.insertIntoTable(playerID, userID, userRating)
-                self.table[playerID][3][0] += 1
-                self.table[playerID][3][1] += userRating
+                self.table[playerID][3][0] += 1             #Incrementa o contador de avaliações
+                self.table[playerID][3][1] += userRating    #Soma o rating
 
     #Calcula as medias
     def average(self):

@@ -6,10 +6,11 @@ class HashRatingTable(object):
     #Constructor
     def __init__(self):
 
-        self.size = 138493 + 1
+        self.size = 138493 + 1          #Maior id + 1
 
-        #Initialize table
+        #Inicializa a tabela
         self.table = [[] for _ in range(self.size)]
+
 
     def insert(self, userId:int,  playerID:int, rating:float):
         self.table[userId].append([playerID, rating])
@@ -21,7 +22,7 @@ class HashRatingTable(object):
 
     def readDataSet(self):
 
-        with open('datasets/rating.csv', encoding="utf8") as input:
+        with open('datasets/minirating.csv', encoding="utf8") as input:
             playersFile = csv.reader(input, delimiter=",")
 
             playersFile.__next__() #Skip first line 

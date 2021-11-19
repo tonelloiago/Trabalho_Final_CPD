@@ -1,12 +1,14 @@
+from Trie import *
+from HashPlayersTable import *
 #Pesquisa player <prefix>
-found = []
-tupla = (findPrefix(root, 'Lionel'))
-if tupla[0] == True:
-    findId(tupla[1], found)
 
-#Transforma em set para ignorar os repetidos
-found = set(found)          
+def queryOnTrie(players, root, prefix):
+    found = []
+    tupla = (findPrefix(root, prefix))
+    if tupla[0] == True:
+        findId(tupla[1], found)
 
-#Pesquisa os id's na tabela hash
-for id in found:
-    print(players.query(id))
+    #Transforma em set para ignorar os repetidos
+    found = set(found)          
+
+    return found

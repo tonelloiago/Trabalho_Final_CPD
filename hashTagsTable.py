@@ -1,5 +1,8 @@
+'''NÃO É UMA CLASSE'''
+
 import csv
 
+#Insere as tags na tabelas hash de players
 def insertTagsOnPlayers(playersTable, sofifa_id, tag):
     
     playersTable[sofifa_id][4].append(tag)
@@ -7,6 +10,7 @@ def insertTagsOnPlayers(playersTable, sofifa_id, tag):
     return playersTable
 
 
+#Le as tags do arquivo tags.csv
 def readTags(playersTable):
 
         with open('datasets/tags.csv', encoding="utf8") as input:
