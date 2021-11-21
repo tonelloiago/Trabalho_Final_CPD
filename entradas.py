@@ -70,6 +70,25 @@ def entrada(word:str, players:object, ratings:object, root):
 
         except:
             print("erro")
+  
+    #pesquisa extra
+    elif word[0:6] == 'bottom':
+
+        try:
+            word = word.replace("'", "")
+            comm = word.split(" ")
+            N = int(comm[0][6:])
+            position = comm[1]
+
+            rtngslist = queryBottom(players.table, position)
+
+            for elemento in rtngslist:
+                if N != 0:
+                    print(players.query(elemento[0]))
+                    N -= 1
+
+        except:
+            print("erro")    
 
 
 
