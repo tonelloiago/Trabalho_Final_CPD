@@ -10,13 +10,12 @@ Fase 1 - Check
     Arvore Trie - Check
 
 Tempo Fase 1 - 63.39 segundos
+No meu PC deu mais ou menos 30 segundos (não sei porque)
 
 Fase 2 - X
 
     QuickSort - Check
     input - Não usado ainda
     Interface - X
-    Estrutura das pesquisas - Falta top<N> 'position'
-
 
 Obs.: Tentei organizar em pastas mas o python não foi muito amigável com isso.
