@@ -1,7 +1,7 @@
 from queryTags import queryTags
 from queryTrie import *
 from queryUserRatings import queryUserRatings
-
+from queryTop import queryTOP
 
 def entrada(word:str, players:object, ratings:object, root):
     if word[0:6] == 'player':
@@ -60,9 +60,13 @@ def entrada(word:str, players:object, ratings:object, root):
             comm = word.split(" ")
             N = int(comm[0][3:])
             position = comm[1]
-            print(N)
-            print(position)
-            
+
+            ratingslist = queryTOP(players.table, position)
+
+            for elemento in ratingslist:
+                if N != 0:
+                    print(players.query(elemento[0]))
+                    N -= 1
 
         except:
             print("erro")
