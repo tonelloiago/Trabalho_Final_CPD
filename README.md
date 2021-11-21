@@ -9,7 +9,7 @@ Fase 1 - Check
     HashTags - Check
     Arvore Trie - Check
 
-Tempo Fase 1 - 63.39 segundos
+Tempo Fase 1 - 63.39 segundos //
 No meu PC deu mais ou menos 30 segundos (não sei porque)
 
 Fase 2 - X
