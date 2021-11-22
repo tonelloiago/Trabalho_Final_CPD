@@ -1,7 +1,9 @@
+from random import randint
 from queryTags import queryTags
 from queryTrie import *
 from queryUserRatings import queryUserRatings
 from queryTop import queryTOP
+from queryRandom import queryRandom
 from queryBottom import queryBottom
 
 def entrada(word:str, players:object, ratings:object, root):
@@ -77,7 +79,8 @@ def entrada(word:str, players:object, ratings:object, root):
         except:
             print("erro")
   
-    #pesquisa extra
+    #pesquisas extras:
+    #Formato: bottom<N> ‘<position>’
     elif word[0:6] == 'bottom':
 
         try:
@@ -96,6 +99,34 @@ def entrada(word:str, players:object, ratings:object, root):
         except:
             print("erro")    
 
+    #Formato: random<N> ‘<position>’ - <list of tags>
+    elif word[0:6] == 'random':
 
+        try:
+
+            word2 = word
+            word = word[0:word.find("-")].replace("'", "")
+            comm = word[0:word.find("-")].split(" ")
+            N = int(comm[0][6:])
+            position = comm[1]
+
+            word2 = word2[word2.find("-") + 3:len(word2) - 1].replace("''", '*')
+            word2 = word2.replace("' '", "*")
+            taglist = word2.split("*")
+
+            randlist = queryRandom(players.table, position, taglist)
+
+            if N>len(randlist):
+                for id in randlist:
+                    print(players.query(id))
+            else:
+                while N != 0:
+                    x = randint(0, len(randlist))
+                    print(players.query(randlist[x]))
+                    randlist.remove(randlist[x])
+                    N -= 1
+
+        except:
+            print("erro")
 
 
