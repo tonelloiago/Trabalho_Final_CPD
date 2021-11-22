@@ -44,13 +44,18 @@ def entrada(word:str, players:object, ratings:object, root):
     elif word[0:4] == 'tags':
     
         try:
+            '''
             word = word.replace(" ", "")
             
             
             comm = word[4:].replace("''", '*')
             comm = comm.replace("'", "")
             tags = comm.split("*")
-
+            '''
+            comm = word[6:len(word) - 1].replace("''", '*')
+            comm = comm.replace("' '", "*")
+            tags = comm.split("*")
+            
             tagsList = queryTags(players.table, tags)
 
             for id in tagsList:
