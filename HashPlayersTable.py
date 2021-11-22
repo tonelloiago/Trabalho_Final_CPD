@@ -38,23 +38,6 @@ class HashTablePlayers(object):
         print('players.csv DONE!')
         
 
-    #Le o arquivo rating.csv e insere as avaliaçoes
-    def ratingCount(self):
-        
-        with open('datasets/minirating.csv', encoding="utf8") as input:
-            rating = csv.reader(input, delimiter=",")
-
-            rating.__next__() #Skip first line 
-            
-            for row in rating:
-                #userID = int(row[0])
-                playerID = int(row[1])
-                userRating = float(row[2])
-                
-                #self.insertIntoTable(playerID, userID, userRating)
-                self.table[playerID][3][0] += 1             #Incrementa o contador de avaliações
-                self.table[playerID][3][1] += userRating    #Soma o rating
-
     #Calcula as medias
     def average(self):
         for i in range(self.size):
@@ -63,8 +46,8 @@ class HashTablePlayers(object):
             try:
 
                 count = self.table[i][3][0]
-                sum = self.table[i][3][1]
-                self.table[i][3] = round(sum / count, 6)
+                sum_ = self.table[i][3][1]
+                self.table[i][3][1] = round(sum_ / count, 6)
 
             except:
                 pass

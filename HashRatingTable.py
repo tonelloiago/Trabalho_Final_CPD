@@ -20,20 +20,6 @@ class HashRatingTable(object):
         return self.table[userID]
 
 
-    def readDataSet(self):
 
-        with open('datasets/minirating.csv', encoding="utf8") as input:
-            playersFile = csv.reader(input, delimiter=",")
-
-            playersFile.__next__() #Skip first line 
-            
-            for row in playersFile:
-                userID = int(row[0])
-                playerID = int(row[1])
-                rating = float(row[2])
-                
-                self.insert(userID, playerID, rating)
-
-        print('backend/ratings.csv DONE!')
 
 

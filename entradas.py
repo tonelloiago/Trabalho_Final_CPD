@@ -2,14 +2,18 @@ from queryTags import queryTags
 from queryTrie import *
 from queryUserRatings import queryUserRatings
 from queryTop import queryTOP
+from queryBottom import queryBottom
 
 def entrada(word:str, players:object, ratings:object, root):
-    if word[0:6] == 'player':
+
+    if word[0:7] == 'players':
 
         try:
             word = word.replace(" ", "")
-            comm = word[0:6]
-            prefix = word[6:]
+            comm = word[0:7]
+            prefix = word[7:]
+            print(comm)
+            print(prefix)
 
             found = queryOnTrie(players, root, prefix)
 
@@ -26,10 +30,12 @@ def entrada(word:str, players:object, ratings:object, root):
         try:
             id = int(word[4:])
             
+            
             userRtgsList = queryUserRatings(ratings.table, id)
-
+            
             print(userRtgsList)
-
+        
+        
         except:
             print("erro")
 
@@ -37,7 +43,7 @@ def entrada(word:str, players:object, ratings:object, root):
     
         try:
             word = word.replace(" ", "")
-            #tags'a''b'
+            
             
             comm = word[4:].replace("''", '*')
             comm = comm.replace("'", "")
