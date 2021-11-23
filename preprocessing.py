@@ -1,42 +1,28 @@
-from HashPlayersTable import HashTablePlayers
-from HashRatingTable import HashRatingTable
-from Trie import TrieNode
+from HashPlayersTable import *
+from HashRatingTable import *
+from Trie import *
 from hashTagsTable import *
 from readRatings import *
-
-from threading import Thread
 import time
 
 
-
-def preProcessing():
+def preProcessing(players:object, ratings:object, root):
     inicio = time.time()
 
-    players = HashTablePlayers() #Instância players
-    ratings = HashRatingTable()  #Instância ratings
-
-    root = TrieNode('*')        ##Inicializa arvore trie
+    #Cria a tabela de players
     players.readDataSet(root)
 
-    # #Inicializa as threads para realizar as duas leituras de rating
-    # t1 = Thread(target=ratings.readDataSet)
-    # t2 = Thread(target=players.ratingCount)
-    # t1.start()
-    # t2.start()
-    # t1.join()
-    # t2.join()
-
+    #Faz a leitura do ratings.csv
     readRatingsFile(players, ratings)
     
-
-    #tentar juntar as inserções na players
+    #Calcula as medias
     players.average()
+
+    #faz a leitura das tags
     players.table = readTags(players.table)
 
     print(time.time() - inicio)
 
-
-    return players, ratings, root    
 
 
 

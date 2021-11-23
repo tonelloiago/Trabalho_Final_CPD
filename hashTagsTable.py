@@ -25,6 +25,8 @@ def readTags(playersTable):
                 
                 playersTable = insertTagsOnPlayers(playersTable, sofifa_id, tag)
 
+        input.close()
+
         print('tags.csv DONE!')
         return playersTable
         

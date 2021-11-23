@@ -1,6 +1,6 @@
-class TrieNode(object):
+class TrieNode():
 
-    def __init__(self, char: str, sofifa_id=0):
+    def __init__(self, char: str):
         self.char = char
         self.children = []
         self.sofifa_id = 0
@@ -8,7 +8,7 @@ class TrieNode(object):
         self.counter = 1
         self.leaf = False
 
-#percorre a arvore e insere o novo nodo
+#Percorre a arvore e insere o novo nodo
 def insertIntoTrie(root, word: str, sofifa_id: int):
 
     node = root
@@ -87,22 +87,3 @@ def findId (node, found):
                 
 
     return child.sofifa_id
-
-
-#Teste
-if __name__ == "__main__":
-    root = TrieNode('*')
-    found= []
-    insertIntoTrie(root, "Fernando Luiz Rosa", 135507)
-    insertIntoTrie(root, 'Ferland Mendy', 228618)
-
-    insertIntoTrie(root, 'Ferran Torres Garcia', 241461)
-    insertIntoTrie(root, 'loucura', 2222)
-
-    tupla = (findPrefix(root, 'Fer'))
-    print(tupla)
-    
-    if tupla[0] == True:
-        findId(tupla[1], found)
-
-    print(sorted(set(found)))

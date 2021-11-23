@@ -34,6 +34,8 @@ class HashTablePlayers(object):
                 
                 self.insertIntoHash(playerID, name, positions)      #Insere dados na tabela
                 insertIntoTrie(root, name, playerID)        #Insere nome e id na arvore
+        
+        input.close()
 
         print('players.csv DONE!')
         

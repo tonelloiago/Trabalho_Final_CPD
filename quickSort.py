@@ -14,6 +14,7 @@ def quicksort(array, inicio, fim):
         quicksort(array, pi + 1, fim)
     
     
+    
 
 def partition(array, inicio, fim):
     pidx =  random.randrange(inicio, fim)

@@ -2,9 +2,12 @@ from Trie import *
 from HashPlayersTable import *
 #Pesquisa player <prefix>
 
-def queryOnTrie(players, root, prefix):
+def queryOnTrie(root, prefix):
+    
     found = []
+    
     tupla = (findPrefix(root, prefix))
+    
     if tupla[0] == True:
         findId(tupla[1], found)
 

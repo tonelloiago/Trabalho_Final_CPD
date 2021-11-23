@@ -5,7 +5,7 @@ from HashRatingTable import *
         #Le o arquivo rating.csv e insere as avaliaçoes
 def readRatingsFile(players:object, ratings:object):
     
-    with open('datasets/rating.csv', encoding="utf8") as input:
+    with open('datasets/minirating.csv', encoding="utf8") as input:
         rating = csv.reader(input, delimiter=",")
 
         rating.__next__() #Skip first line 
