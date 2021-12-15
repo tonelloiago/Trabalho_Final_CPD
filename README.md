@@ -15,7 +15,7 @@ No meu PC deu mais ou menos 30 segundos (não sei porque)
 Fase 2 - X
 
     QuickSort - Check
-    input - Não usado ainda
-    Interface - X
+    input - Check
+    Interface - Check
 
-Obs.: Tentei organizar em pastas mas o python não foi muito amigável com isso.
+Obs.: Tentei organizar em pastas mas o python não foi muito amigável com isso. Provavelmente algum erro de configuração.
