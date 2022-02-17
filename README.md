@@ -10,12 +10,14 @@ Fase 1 - Check
     Arvore Trie - Check
 
 Tempo Fase 1 - 44,19 segundos //
-No meu PC deu mais ou menos 30 segundos (não sei porque)
 
-Fase 2 - X
+
+Fase 2 - Check
 
     QuickSort - Check
     input - Check
     Interface - Check
 
 Obs.: Tentei organizar em pastas mas o python não foi muito amigável com isso. Provavelmente algum erro de configuração.
+
+Nota Final: 13 
